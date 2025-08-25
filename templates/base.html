@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Boiler diagnostics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/all.min.css') }}"
+    > <!-- Font Awesome -->
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        {% include 'partials/sidebar.html' %}
+        <div class="content-wrapper">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='assets/js/adminlte.min.js') }}"></script>
+</body>
+
+</html>

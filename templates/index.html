@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Boiler Monitoring Dashboard</h1>
+
+<p>Welcome! Choose a module:</p>
+
+<ul>
+    <li><a href="/forecast/">📈 Forecast</a> – View temperature trends</li>
+    <li><a href="/anomalies/">⚠️ Anomalies</a> – Detect unusual readings</li>
+    <li><a href="/alerts/">📋 Alerts</a> – Review alert history</li>
+</ul>
+
+<hr>
+
+<h3>System Summary</h3>
+<ul>
+    <li>Current Temp: 72.5°C</li>
+    <li>Pressure: 1.4 bar</li>
+    <li>Last Alert: High temperature detected at 14:30</li>
+</ul>
+{% endblock %}
