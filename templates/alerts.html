@@ -2,15 +2,21 @@
 {% block content %}
 <div class="content-header text-center">
     <div class="container-fluid">
-        <h1 class="m-0 text-dark">Temperature Over Time</h1>
+        <h1 class="m-0 text-dark">Alert History</h1>
     </div>
 </div>
 
 <div class="container-fluid">
-    <div class="card">
-        <div class="card-body">
-            {{ chart_html|safe }}
+    <div class="row">
+        {% for chart in charts %}
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    {{ chart|safe }}
+                </div>
+            </div>
         </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

@@ -14,8 +14,17 @@
     <div class="wrapper">
         {% include 'partials/sidebar.html' %}
         <div class="content-wrapper">
-            {% block content %}{% endblock %}
+            {% block content %}
+            <div class="d-flex flex-column align-items-center justify-content-center py-5" style="background-color: white;">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Boiler Logo"
+                    style="width: 550px; max-width: 100%; height: auto; margin-bottom: 10px;">
+                <h1 class="display-3 text-dark text-center" style="font-family: 'Arial', sans-serif; letter-spacing: 1px;">
+                    HOT WATER TANK DIAGNOSTICS
+                </h1>
+            </div>
+            {% endblock %}
         </div>
+
     </div>
 
     <script src="{{ url_for('static', filename='assets/js/adminlte.min.js') }}"></script>
