@@ -99,6 +99,8 @@
         .active {
             background-color: #007bff;
         }
+
+        x
     </style>
 </head>
 
@@ -149,11 +151,32 @@
                     </li>
                 </ul>
 
+                <ul class="nav nav-pills nav-sidebar flex-column nav-main">
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" class="nav-link factory-link">
+                            <i class="nav-icon fas fa-industry"></i>
+                            <p>Завод "Сердика"</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" class="nav-link factory-link">
+                            <i class="nav-icon fas fa-industry"></i>
+                            <p>Завод "Приста"</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" class="nav-link factory-link">
+                            <i class="nav-icon fas fa-industry"></i>
+                            <p>Завод "Мадара"</p>
+                        </a>
+                    </li>
+                </ul>
+
+
                 <!-- Settings pinned to bottom -->
                 <ul class="nav nav-pills nav-sidebar flex-column nav-bottom">
                     <li class="nav-item">
-                        <a href="{{ url_for('alerts.alerts') }}"
-                            class="nav-link {% if 'settings' in segment %}active{% endif %}">
+                        <a href="javascript:void(0)" class="nav-link">
                             <i class="nav-icon fas fa-cog"></i>
                             <p>Settings</p>
                         </a>
@@ -161,8 +184,16 @@
                 </ul>
                 <ul class="nav nav-pills nav-sidebar flex-column nav-bottom">
                     <li class="nav-item">
-                        <a href="{{ url_for('alerts.alerts') }}" class="nav-link {% if 'settings' in segment %}active{% endif %}">
-                            <i class="nav-icon fas fa-cog"></i>
+                        <a href="javascript:void(0)" class="nav-link">
+                            <i class="nav-icon fas fa-question-circle"></i>
+                            <p>Help & support</p>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav nav-pills nav-sidebar flex-column nav-bottom">
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" class="nav-link">
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
                             <p>Logout</p>
                         </a>
                     </li>

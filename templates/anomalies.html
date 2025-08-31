@@ -8,8 +8,8 @@
 
 <div class="content">
     <div class="container-fluid">
+        <!-- Info Boxes -->
         <div class="row mb-4">
-            <!-- Info boxes -->
             <div class="col-md-4">
                 <div class="info-box bg-danger">
                     <span class="info-box-icon"><i class="fas fa-exclamation-triangle"></i></span>
@@ -39,15 +39,17 @@
             </div>
         </div>
 
-        <!-- Graph -->
+        <!-- Daily Anomaly Charts -->
         <div class="row">
-            <div class="col-12">
-                <div class="card">
+            {% for chart in charts %}
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100">
                     <div class="card-body">
-                        {{ graph_html|safe }}
+                        {{ chart|safe }}
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>
