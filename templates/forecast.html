@@ -1,25 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="content-header text-center">
-    <div class="container-fluid">
-        <h1 class="m-0 text-dark">Daily Temperature Forecast</h1>
-    </div>
-</div>
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12 text-center">
 
-<div class="container-fluid">
-    <div class="row">
-        {% for chart, status in chart_status_pairs %}
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="card h-100">
-                <div class="card-header text-center font-weight-bold">
-                    {{ status }}
-                </div>
-                <div class="card-body">
-                    {{ chart|safe }}
+            <h2 class="mb-4">Temperature Forecast</h2>
+
+            {% if status_message %}
+            <div class="alert alert-warning font-weight-bold mb-4">
+                {{ status_message }}
+            </div>
+            {% endif %}
+
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    {{ chart_html|safe }}
                 </div>
             </div>
+
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    {{ anomaly_chart_html|safe }}
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body p-2">
+                    {{ performance_chart_html|safe }}
+                </div>
+            </div>
+
         </div>
-        {% endfor %}
     </div>
 </div>
 {% endblock %}

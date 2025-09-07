@@ -125,52 +125,65 @@
             </div>
 
             <!-- Sidebar Menu -->
+            <!-- Sidebar Menu -->
             <nav class="mt-2 sidebar-nav">
-                <!-- Main navigation items -->
-                <ul class="nav nav-pills nav-sidebar flex-column nav-main" role="menu" data-accordion="false">
-                    <li class="nav-item">
-                        <a href="{{ url_for('forecast.temperature_chart') }}"
-                            class="nav-link {% if 'forecast' in segment %}active{% endif %}">
-                            <i class="nav-icon fas fa-chart-line"></i>
-                            <p>Forecast Charts</p>
+                <ul class="nav nav-pills nav-sidebar flex-column nav-main" data-widget="treeview" role="menu"
+                    data-accordion="false">
+            
+                    {% set factories = {
+                    'serdika': ['WH-01', 'WH-02'],
+                    'prista': ['WH-01', 'WH-02'],
+                    'madara': ['WH-01', 'WH-02']
+                    } %}
+            
+                    {% for factory_slug, units in factories.items() %}
+                    <!-- Factory block with nested units and metrics -->
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-industry"></i>
+                            <p>
+                                Завод "{{ factory_slug | capitalize }}"
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            {% for unit in units %}
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-box nav-icon"></i>
+                                    <p>{{ unit }}<i class="right fas fa-angle-left"></i></p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ url_for('forecast.temperature_chart', factory=factory_slug, unit=unit) }}"
+                                            class="nav-link">
+                                            <i class="fas fa-chart-line nav-icon"></i>
+                                            <p>Temperature</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ url_for('noise.noise_forecast', factory=factory_slug, unit=unit) }}"
+                                            class="nav-link">
+                                            <i class="fas fa-volume-up nav-icon"></i>
+                                            <p>Noise</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ url_for('vibrations.vibration_chart', factory=factory_slug, unit=unit) }}"
+                                            class="nav-link">
+                                            <i class="fas fa-mobile-alt nav-icon"></i>
+                                            <p>Vibrations</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            {% endfor %}
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ url_for('anomalies.anomalies') }}"
-                            class="nav-link {% if 'anomalies' in segment %}active{% endif %}">
-                            <i class="nav-icon fas fa-exclamation-triangle"></i>
-                            <p>Anomalies</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ url_for('alerts.alerts') }}"
-                            class="nav-link {% if 'alert_history' in segment %}active{% endif %}">
-                            <i class="nav-icon fas fa-history"></i>
-                            <p>Alert History</p>
-                        </a>
-                    </li>
+                    {% endfor %}
                 </ul>
+            </nav>
 
-                <ul class="nav nav-pills nav-sidebar flex-column nav-main">
-                    <li class="nav-item">
-                        <a href="javascript:void(0)" class="nav-link factory-link">
-                            <i class="nav-icon fas fa-industry"></i>
-                            <p>Завод "Сердика"</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="javascript:void(0)" class="nav-link factory-link">
-                            <i class="nav-icon fas fa-industry"></i>
-                            <p>Завод "Приста"</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="javascript:void(0)" class="nav-link factory-link">
-                            <i class="nav-icon fas fa-industry"></i>
-                            <p>Завод "Мадара"</p>
-                        </a>
-                    </li>
-                </ul>
 
 
                 <!-- Settings pinned to bottom -->
@@ -201,6 +214,14 @@
             </nav>
         </div>
     </aside>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap 4 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AdminLTE -->
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 
 </body>
 

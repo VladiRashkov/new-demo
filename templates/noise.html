@@ -2,7 +2,7 @@
 {% block content %}
 <div class="content-header text-center">
     <div class="container-fluid">
-        <h1 class="m-0 text-dark">Anomaly Analysis</h1>
+        <h1 class="m-0 text-dark">Noise Anomaly Analysis</h1>
     </div>
 </div>
 
@@ -14,35 +14,46 @@
                 <div class="info-box bg-danger">
                     <span class="info-box-icon"><i class="fas fa-exclamation-triangle"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Total Anomalies</span>
+                        <span class="info-box-text">Total Noise Anomalies</span>
                         <span class="info-box-number">{{ total_anomalies }}</span>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="info-box bg-warning">
-                    <span class="info-box-icon"><i class="fas fa-thermometer-half"></i></span>
+                    <span class="info-box-icon"><i class="fas fa-volume-up"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Avg Temperature</span>
-                        <span class="info-box-number">{{ avg_temp }} °C</span>
+                        <span class="info-box-text">Avg Noise Level</span>
+                        <span class="info-box-number">{{ avg_noise }} dB</span>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="info-box bg-info">
-                    <span class="info-box-icon"><i class="fas fa-tachometer-alt"></i></span>
+                    <span class="info-box-icon"><i class="fas fa-bullhorn"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Max Pressure</span>
-                        <span class="info-box-number">{{ max_pressure }}</span>
+                        <span class="info-box-text">Max Noise Level</span>
+                        <span class="info-box-number">{{ max_noise }} dB</span>
                     </div>
                 </div>
             </div>
         </div>
+        {% if forecast_message %}
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="alert alert-info text-center" style="font-size: 1.1rem;">
+                    {{ forecast_message }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
 
-        <!-- Daily Anomaly Charts -->
+
+        <!-- Daily Noise Anomaly Charts -->
+        <!-- Daily Noise Anomaly Charts -->
         <div class="row">
             {% for chart in charts %}
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="col-12 mb-4"> <!-- Wider column -->
                 <div class="card h-100">
                     <div class="card-body">
                         {{ chart|safe }}
@@ -51,6 +62,7 @@
             </div>
             {% endfor %}
         </div>
+
     </div>
 </div>
 {% endblock %}
